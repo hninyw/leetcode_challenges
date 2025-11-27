@@ -44,3 +44,23 @@ class Solution {
         return true;
     }
 }
+
+49. Group Anagrams
+class Solution {
+    public List<List<String>> groupAnagrams(String[] strs) {
+        Map<String, List<String>> map = new HashMap<>();
+
+        for (String s : strs) {
+            char[] sChars = s.toCharArray();
+            Arrays.sort(sChars);
+            // System.out.println(sChars);
+            String sString = new String(sChars);
+
+            map.putIfAbsent(sString, new ArrayList<>());
+            // System.out.println(map);
+            map.get(sString).add(s);
+        }
+
+        return new ArrayList<>(map.values());
+    }
+}
